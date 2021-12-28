@@ -44,6 +44,11 @@ def table():
     #     data = f.read()
     return HTMLResponse(content=data, status_code=200)
 
+@app.get("/report/{ecu}/{days}")
+def report(ecu: str, days: int):
+    """endpoint demonstrating parameterized URL"""
+    return f"Generating report for {ecu} over last {days} days"
+
 if __name__ == '__main__':
     multiprocessing.freeze_support()
     uvicorn.run(app, port=8000, reload=False)
